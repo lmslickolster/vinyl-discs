@@ -5,7 +5,7 @@
   "name": "Vinyl Discs",
   "description": "Turns Minecraft music discs into vinyl records, adds a record to playing jukeboxes, and turns framed records into display stands.",
   "authors": ["Olster Studios"],
-  "license": "MIT",
+  "license": "All-Rights-Reserved",
   "environment": "client",
   "entrypoints": {
     "client": [
