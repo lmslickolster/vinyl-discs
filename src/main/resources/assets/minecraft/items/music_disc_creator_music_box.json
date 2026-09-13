@@ -1,0 +1,28 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:display_context",
+    "cases": [
+      {
+        "when": "fixed",
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:custom_model_data",
+          "index": 0,
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "vinyl_discs:item/vinyl_glow_stand"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "vinyl_discs:item/vinyl_stand"
+          }
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "vinyl_discs:item/vinyl_disc"
+    }
+  }
+}
