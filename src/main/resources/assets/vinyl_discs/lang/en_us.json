@@ -1,0 +1,5 @@
+{
+  "screen.vinyl_discs.settings": "Vinyl Discs Settings",
+  "screen.vinyl_discs.resolution_description": "Choose the texture resolution used by Vinyl Discs.",
+  "option.vinyl_discs.texture_resolution": "Texture Resolution: %s"
+}
