@@ -10,6 +10,9 @@
   "entrypoints": {
     "client": [
       "site.olsterstudios.vinyldiscs.VinylDiscsClient"
+    ],
+    "modmenu": [
+      "site.olsterstudios.vinyldiscs.ModMenuIntegration"
     ]
   },
   "mixins": [
