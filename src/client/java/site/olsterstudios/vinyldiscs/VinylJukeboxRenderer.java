@@ -1,22 +1,24 @@
 package site.olsterstudios.vinyldiscs;
 
 import net.minecraft.block.entity.JukeboxBlockEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ItemModelManager;
+import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.item.ItemDisplayContext;
 import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.random.Random;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.client.render.command.ModelCommandRenderer;
 
 public final class VinylJukeboxRenderer implements BlockEntityRenderer<JukeboxBlockEntity, VinylJukeboxRenderState> {
     private final ItemModelManager itemModelManager;
 
     public VinylJukeboxRenderer(BlockEntityRendererFactory.Context context) {
-        this.itemModelManager = context.itemModelManager();
+        this.itemModelManager = MinecraftClient.getInstance().getItemModelManager();
     }
 
     @Override
@@ -25,16 +27,11 @@ public final class VinylJukeboxRenderer implements BlockEntityRenderer<JukeboxBl
     }
 
     @Override
-    public void updateRenderState(JukeboxBlockEntity blockEntity, VinylJukeboxRenderState state, float tickProgress, net.minecraft.util.math.Vec3d cameraPos, net.minecraft.client.render.command.ModelCommandRenderer.CrumblingOverlayCommand crumblingOverlay) {
+    public void updateRenderState(JukeboxBlockEntity blockEntity, VinylJukeboxRenderState state, float tickProgress, Vec3d cameraPos, ModelCommandRenderer.CrumblingOverlayCommand crumblingOverlay) {
         ItemStack stack = blockEntity.getTheItem();
         state.hasRecord = !stack.isEmpty();
         if (state.hasRecord) {
-            itemModelManager.updateForNonLivingEntity(
-                state.vinyl,
-                stack,
-                ItemDisplayContext.FIXED,
-                blockEntity
-            );
+            itemModelManager.updateForNonLivingEntity(state.vinyl, stack, ItemDisplayContext.NONE, blockEntity);
         } else {
             state.vinyl.clear();
         }
