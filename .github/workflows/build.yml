@@ -18,9 +18,9 @@ jobs:
           java-version: '21'
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.14'
+          gradle-version: '9.2.0'
       - name: Generate Gradle Wrapper
-        run: gradle wrapper --gradle-version 8.14 --distribution-type bin
+        run: gradle wrapper --gradle-version 9.2.0 --distribution-type bin
       - name: Commit Gradle Wrapper
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
