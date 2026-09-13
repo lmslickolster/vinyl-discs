@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "vinyl-discs",
+  "version": "${version}",
+  "name": "Vinyl Discs",
+  "description": "Turns Minecraft music discs into vinyl records, adds a record to playing jukeboxes, and turns framed records into display stands.",
+  "authors": ["Olster Studios"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "site.olsterstudios.vinyldiscs.VinylDiscsClient"
+    ]
+  },
+  "mixins": [
+    "vinyl-discs.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.6",
+    "fabric-api": "*",
+    "minecraft": "1.21.11",
+    "java": ">=21"
+  }
+}
