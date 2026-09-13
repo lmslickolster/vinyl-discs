@@ -1,0 +1,1 @@
+The 64x64 texture override is installed at vinyl_disc.png.
