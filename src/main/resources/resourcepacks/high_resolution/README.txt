@@ -1,0 +1,1 @@
+This directory is a built-in resource pack used by the Vinyl Discs 64x64 texture setting.
