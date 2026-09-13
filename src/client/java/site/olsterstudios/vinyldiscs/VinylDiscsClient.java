@@ -1,7 +1,7 @@
 package site.olsterstudios.vinyldiscs;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererFactories;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
@@ -9,7 +9,6 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.resource.ResourcePackManager;
 import net.minecraft.resource.ResourcePackProfile;
-import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 
 public final class VinylDiscsClient implements ClientModInitializer {
@@ -18,7 +17,7 @@ public final class VinylDiscsClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockEntityRendererFactories.register(BlockEntityType.JUKEBOX, VinylJukeboxRenderer::new);
+        BlockEntityRendererRegistry.register(BlockEntityType.JUKEBOX, VinylJukeboxRenderer::new);
 
         VinylDiscsConfig.load();
 
