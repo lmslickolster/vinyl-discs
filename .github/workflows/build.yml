@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,4 +19,19 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.14'
-      - run: gradle build
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper --gradle-version 8.14 --distribution-type bin
+      - name: Commit Gradle Wrapper
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add gradlew gradlew.bat gradle/wrapper
+          if git diff --cached --quiet; then
+            echo "Gradle Wrapper is already up to date."
+          else
+            git commit -m "Add Gradle wrapper"
+            git push
+          fi
+      - name: Build
+        run: ./gradlew build
